@@ -35,32 +35,36 @@ niv_edu = st.selectbox(
     ["2", "3", "4", "5", "SD"]
 )
 
-comuna = st.selectbox(
-    "Comuna",
-    [
-        "Aranjuez",
-        "Belen",
-        "Buenos Aires",
-        "Corregimiento de San Cristobal",
-        "Doce de Octubre",
-        "El Poblado",
-        "Guayabal",
-        "La Candelaria",
-        "Popular",
-        "Robledo",
-        "San Antonio de Prado",
-        "San Javier",
-        "Santa Elena",
-        "Sin informacion"
-    ]
-)
+mapa_comunas = {
+    "Aranjuez": "comuna_Aranjuez",
+    "Belen": "comuna_Belen",
+    "Buenos Aires": "comuna_Buenos Aires",
+    "Corregimiento de San Cristobal": "comuna_Corregimiento de San Cristobal",
+    "Doce de Octubre": "comuna_Doce de Octubre",
+    "El Poblado": "comuna_El Poblado",
+    "Guayabal": "comuna_Guayabal",
+    "La Candelaria": "comuna_La Candelaria",
+    "Manrique": "comuna_Manrique",
+    "Popular": "comuna_Popular",
+    "Robledo": "comuna_Robledo",
+    "San Antonio de Prado": "comuna_San Antonio de Prado",
+    "San Javier": "comuna_San Javier",
+    "Santa Elena": "comuna_Santa_Elena",
+    "Sin informacion": "comuna_Sin_Info"
+}
+
+comuna_usuario = st.selectbox("Comuna", list(mapa_comunas.keys()))
 # ===============================
 # Columnas EXACTAS del modelo
 # ===============================
 columnas_modelo = [
     "edad_", "sem_gest",
+
     "tipo_ss__E", "tipo_ss__I", "tipo_ss__N", "tipo_ss__P", "tipo_ss__S",
-    "niv_edu_ma_2", "niv_edu_ma_3", "niv_edu_ma_4", "niv_edu_ma_5", "niv_edu_ma_SD",
+
+    "niv_edu_ma_2", "niv_edu_ma_3", "niv_edu_ma_4",
+    "niv_edu_ma_5", "niv_edu_ma_SD",
+
     "comuna_Aranjuez",
     "comuna_Belen",
     "comuna_Buenos Aires",
@@ -69,12 +73,13 @@ columnas_modelo = [
     "comuna_El Poblado",
     "comuna_Guayabal",
     "comuna_La Candelaria",
+    "comuna_Manrique",          
     "comuna_Popular",
     "comuna_Robledo",
     "comuna_San Antonio de Prado",
     "comuna_San Javier",
-    "comuna_Santa Elena",
-    "comuna_Sin informacion"
+    "comuna_Santa_Elena",       
+    "comuna_Sin_Info"           
 ]
 
 # ===============================
