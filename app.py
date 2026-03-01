@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import joblib
@@ -9,7 +8,7 @@ st.set_page_config(
 )
 
 # ===============================
-# Cargar modelo
+# Cargar modelo (SIN scaler)
 # ===============================
 @st.cache_resource
 def load_model():
@@ -25,15 +24,34 @@ st.title("Predicción del Peso al Nacer")
 edad_ = st.number_input("Edad de la madre", 10, 60, 25)
 sem_gest = st.number_input("Semanas de gestación", 20.0, 45.0, 38.0)
 
-tipo_ss = st.selectbox(
+tipo_ss_usuario = st.selectbox(
     "Tipo de seguridad social",
     ["E", "I", "N", "P", "S"]
 )
 
-niv_edu = st.selectbox(
+niv_edu_usuario = st.selectbox(
     "Nivel educativo",
     ["2", "3", "4", "5", "SD"]
 )
+
+# ===============================
+# Mapas EXACTOS (entrenamiento)
+# ===============================
+mapa_tipo_ss = {
+    "E": "tipo_ss__E",
+    "I": "tipo_ss__I",
+    "N": "tipo_ss__N",
+    "P": "tipo_ss__P",
+    "S": "tipo_ss__S"
+}
+
+mapa_niv_edu = {
+    "2": "niv_edu_ma_2",
+    "3": "niv_edu_ma_3",
+    "4": "niv_edu_ma_4",
+    "5": "niv_edu_ma_5",
+    "SD": "niv_edu_ma_SD"
+}
 
 mapa_comunas = {
     "Aranjuez": "comuna_Aranjuez",
@@ -54,6 +72,7 @@ mapa_comunas = {
 }
 
 comuna_usuario = st.selectbox("Comuna", list(mapa_comunas.keys()))
+
 # ===============================
 # Columnas EXACTAS del modelo
 # ===============================
@@ -73,13 +92,13 @@ columnas_modelo = [
     "comuna_El Poblado",
     "comuna_Guayabal",
     "comuna_La Candelaria",
-    "comuna_Manrique",          
+    "comuna_Manrique",
     "comuna_Popular",
     "comuna_Robledo",
     "comuna_San Antonio de Prado",
     "comuna_San Javier",
-    "comuna_Santa_Elena",       
-    "comuna_Sin_Info"           
+    "comuna_Santa_Elena",
+    "comuna_Sin_Info"
 ]
 
 # ===============================
@@ -91,15 +110,10 @@ data = dict.fromkeys(columnas_modelo, 0)
 data["edad_"] = edad_
 data["sem_gest"] = sem_gest
 
-# One-hot seguro
-if f"tipo_ss__{tipo_ss}" in data:
-    data[f"tipo_ss__{tipo_ss}"] = 1
-
-if f"niv_edu_ma_{niv_edu}" in data:
-    data[f"niv_edu_ma_{niv_edu}"] = 1
-
-if f"comuna_{comuna}" in data:
-    data[f"comuna_{comuna}"] = 1
+# One-hot (SIN if)
+data[mapa_tipo_ss[tipo_ss_usuario]] = 1
+data[mapa_niv_edu[niv_edu_usuario]] = 1
+data[mapa_comunas[comuna_usuario]] = 1
 
 df = pd.DataFrame([data])
 
