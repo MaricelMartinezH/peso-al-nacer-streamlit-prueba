@@ -38,33 +38,43 @@ niv_edu = st.selectbox(
 comuna = st.selectbox(
     "Comuna",
     [
-        "Aranjuez", "Belen", "Buenos_Aires",
-        "Corregimiento_de_San_Cristobal",
-        "Doce_de_Octubre", "El_Poblado",
-        "Guayabal", "La_Candelaria",
-        "Popular", "Robledo",
-        "San_Antonio_de_Prado",
-        "San_Javier", "Santa_Elena",
-        "Sin_Info"
+        "Aranjuez",
+        "Belen",
+        "Buenos Aires",
+        "Corregimiento de San Cristobal",
+        "Doce de Octubre",
+        "El Poblado",
+        "Guayabal",
+        "La Candelaria",
+        "Popular",
+        "Robledo",
+        "San Antonio de Prado",
+        "San Javier",
+        "Santa Elena",
+        "Sin informacion"
     ]
 )
-
 # ===============================
 # Columnas EXACTAS del modelo
 # ===============================
 columnas_modelo = [
     "edad_", "sem_gest",
     "tipo_ss__E", "tipo_ss__I", "tipo_ss__N", "tipo_ss__P", "tipo_ss__S",
-    "niv_edu_ma_2", "niv_edu_ma_3", "niv_edu_ma_4",
-    "niv_edu_ma_5", "niv_edu_ma_SD",
-    "comuna_Aranjuez", "comuna_Belen", "comuna_Buenos_Aires",
-    "comuna_Corregimiento_de_San_Cristobal",
-    "comuna_Doce_de_Octubre", "comuna_El_Poblado",
-    "comuna_Guayabal", "comuna_La_Candelaria",
-    "comuna_Popular", "comuna_Robledo",
-    "comuna_San_Antonio_de_Prado",
-    "comuna_San_Javier", "comuna_Santa_Elena",
-    "comuna_Sin_Info"
+    "niv_edu_ma_2", "niv_edu_ma_3", "niv_edu_ma_4", "niv_edu_ma_5", "niv_edu_ma_SD",
+    "comuna_Aranjuez",
+    "comuna_Belen",
+    "comuna_Buenos Aires",
+    "comuna_Corregimiento de San Cristobal",
+    "comuna_Doce de Octubre",
+    "comuna_El Poblado",
+    "comuna_Guayabal",
+    "comuna_La Candelaria",
+    "comuna_Popular",
+    "comuna_Robledo",
+    "comuna_San Antonio de Prado",
+    "comuna_San Javier",
+    "comuna_Santa Elena",
+    "comuna_Sin informacion"
 ]
 
 # ===============================
